@@ -12,5 +12,7 @@ public class Run {
     public void Start() {
         (new Thread((Runnable) new Cmd())).start();
         config = new Config("./config.yml");
+        (new Thread((Runnable) new Server())).start();
+        //(new Thread((Runnable) new Cmd())).start();
     }
 }

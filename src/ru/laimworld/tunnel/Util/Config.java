@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Config {
-    String ip;
-    String token;
-    int serverPort;
-    int remotePort;
-    File file;
+    private String ip;
+    private String token;
+    private int serverPort;
+    private int remotePort;
+    private File file;
     public Config(String src) {
         try {
             file = new File(src);
@@ -22,7 +22,6 @@ public class Config {
                 writer.close();
             } else {}
             loadConfig(new BufferedReader(new FileReader(file)));
-            System.out.println("File config.yml loaded!");
         } catch (Exception ex) {
             System.out.println("File config.yml error: " + ex);
         }
@@ -39,7 +38,7 @@ public class Config {
             System.out.println("loadConfig error: " + ex);
         }
     }
-    void setConfigData(String parameter, String meaning) {
+    private void setConfigData(String parameter, String meaning) {
         meaning = meaning.replace(" ", "");
         switch (parameter) {
             case "ip":
@@ -58,7 +57,7 @@ public class Config {
                 break;
         }
     }
-    BufferedWriter getDefaultConfig(BufferedWriter writer) {
+    private BufferedWriter getDefaultConfig(BufferedWriter writer) {
         try {
             writer.write("ip: 0.0.0.0");
             writer.newLine();
